@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerMovement : MonoBehaviour
 {
     private new Camera camera;
     private new Rigidbody2D rigidbody;
+
+    private PhotonView photonView;
 
     private Vector2 velocity;
     private float inputAxis;
@@ -25,10 +28,13 @@ public class PlayerMovement : MonoBehaviour
     {
         camera = Camera.main;
         rigidbody = GetComponent<Rigidbody2D>();
+        photonView = GetComponent<PhotonView>();
     }
 
     private void Update()
     {
+        if (photonView != null && !photonView.IsMine) return;
+
         HorizontalMovement();
 
         grounded = rigidbody.Raycast(Vector2.down);
