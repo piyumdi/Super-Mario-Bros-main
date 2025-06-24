@@ -515,6 +515,7 @@ GameObject:
   - component: {fileID: 6522655005183227262}
   - component: {fileID: -6864998985442100536}
   - component: {fileID: 5956469074884442812}
+  - component: {fileID: -567556882165119796}
   m_Layer: 3
   m_Name: Mario
   m_TagString: Mario
@@ -678,3 +679,16 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &-567556882165119796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7352548806849280119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd99afef497547d4ca3252be2fe557ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScore: 0
