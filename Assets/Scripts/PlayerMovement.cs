@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     private new Camera camera;
     private new Rigidbody2D rigidbody;
+
+    public GameObject CanvasName;
+    public Text Name;
 
     private PhotonView photonView;
 
@@ -24,11 +28,21 @@ public class PlayerMovement : MonoBehaviour
     public bool running => Mathf.Abs(velocity.x) > 0.25f || Mathf.Abs(inputAxis) > 0.25f;
     public bool sliding => (inputAxis > 0f && velocity.x < 0f) || (inputAxis < 0f && velocity.x > 0f);
 
+
     private void Awake()
     {
         camera = Camera.main;
         rigidbody = GetComponent<Rigidbody2D>();
         photonView = GetComponent<PhotonView>();
+    }
+
+    void Start()
+    {
+        if(GetComponent<PhotonView>().IsMine == false)
+        {
+            CanvasName.SetActive(true);
+            Name.text = GetComponent<PhotonView>().Controller.NickName;
+        }
     }
 
     private void Update()
